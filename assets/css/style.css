@@ -107,7 +107,7 @@ form .field{
     margin-bottom: 2%;
 }
 form .field:focus {
-    border: 2px solid #3498DB;
+    border: 2px solid #736984;
 }
 form .btn{
     background-color: #736984;
