@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from urllib import unquote
+from urllib.parse import unquote
 
 from .models import CourseVideo, ShortVideo
 

@@ -3,18 +3,19 @@
 
 
 <head>
-    <!--{% include 'includes/head.html' %}-->
+    {% include 'includes/head.html' %}
     <title>{% block title %}{% endblock title %}</title>
 </head>
 
 {% block style %}{% endblock style %}
 
 <body>
-    <!--{% include 'includes/navbar.html' %}-->
+    {% include 'includes/navbar.html' %}
+    {% include 'includes/messages.html' %}
+    <div class="jumbotron">
+        {% block content %} {% endblock content %}
+    </div>
 
-    {% block content %} {% endblock content %}
-
-    <!--{% include 'includes/footer.html' %}-->
     {% block script %}{% endblock script %}
 
 </body>

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}ورود به حساب کاربری{% endblock %}
+
+{% block style %}
+<style>
+    /* *{
+        box-sizing: border-box;
+    } */
+    body{
+        background-color: #BAB3AE;
+        padding: 50px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="authentication">
+        <h1>Login</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.phone }}
+            {{ form.password }}
+            <input type="submit" value="Login" class="btn">
+        </form>
+        <div class="pass-link">
+            <a href="#" >Lost your password?</a>
+        </div>
+    </div>
+
+{% endblock %}
