@@ -4,9 +4,6 @@
 
 {% block style %}
 <style>
-    /* *{
-        box-sizing: border-box;
-    } */
     body{
         background-color: #BAB3AE;
         padding: 50px;
@@ -20,8 +17,9 @@
         <h1>Login</h1>
         <form method="POST">
             {% csrf_token %}
-            {{ form.phone }}
-            {{ form.password }}
+            <span>شماره همراه:</span>{{ form.phone }}
+            <br>
+            <span>تکرار رمز عبور</span>{{ form.password }}
             <input type="submit" value="Login" class="btn">
         </form>
         <div class="pass-link">

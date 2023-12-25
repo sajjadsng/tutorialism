@@ -11,6 +11,11 @@ class UserLoginView(View):
     template_name = 'accounts/login.html'
     form_class = UserLoginForm
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('home:home')
+        return super().dispatch(request, *args, **kwargs)
+
     def get(self, request):
         form = self.form_class
         context = {'form': form}
