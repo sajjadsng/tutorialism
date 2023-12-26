@@ -4,14 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from urllib.parse import unquote
 
-from .models import CourseVideo, ShortVideo
-
-
-class CourseVideoView(View):
-    def get(self, request, video_id=None, video_slug=None):
-        video = get_object_or_404(CourseVideo, id=video_id, slug=video_slug)
-        context = {'video': video}
-        return render(request, 'video/video.html', context)
+from .models import ShortVideo
 
 
 class ShortVideoListView(View):

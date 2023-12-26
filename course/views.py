@@ -42,3 +42,10 @@ class CourseDetailView(View):
             'videos': videos
         }
         return render(request, 'course/course_detail.html', context)
+
+
+class CourseVideoView(View):
+    def get(self, request, video_id=None, video_slug=None):
+        video = get_object_or_404(CourseVideo, id=video_id, slug=video_slug)
+        context = {'video': video}
+        return render(request, 'course/video_course.html', context)

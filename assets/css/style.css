@@ -177,5 +177,37 @@ form .btn:active {
     font-size: 12px;
     color: black;
 }
-
 /* END AUTHENTICATION */
+
+/* CARD */
+div.card-body p.cart-detail {
+    color: #736984;
+}
+div.card-body a.btn-detail {
+    background-color: #736984;
+    border: #736984;
+}
+/* END CARD */
+
+/* DETAIL */
+div.detail img.detail-img {
+    width: 43%;
+    margin-right: 28%;
+    border-radius: 2%;
+}
+div.detail p.detail-lead {
+    text-align: center;
+    margin-top: 2%;
+}
+ol.breadcrumb li a {
+    text-decoration: none;
+    color: #3d3c3c;
+}
+a.videos-btn {
+    background-color: #736984;
+    border: #736984;
+}
+a.videos-btn:hover {
+    background-color: #777;
+}
+/* END DETAIL */
