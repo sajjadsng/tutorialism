@@ -34,6 +34,6 @@ class CourseVideo(Video):
 
     def get_absolute_url(self):
         return reverse(
-            "video:course_video",
+            "course:video_course",
             kwargs={'video_id': self.id, 'video_slug': self.slug}
         )

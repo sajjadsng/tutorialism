@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} لیست ویدیو های دوره {% endblock title %}
+
+{% block content %}
+
+    {% for video in videos %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ video.banner.url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-center">{{ video.title }}</h5>
+                <p class="card-text cart-detail">{{ video.teacher }}</p>
+                <a href="{{ video.get_absolute_url }}" class="btn btn-primary btn-detail">تماشا ویدیو</a>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

@@ -207,7 +207,8 @@ a.videos-btn {
     background-color: #736984;
     border: #736984;
 }
-a.videos-btn:hover {
+a.videos-btn:hover, a.videos-btn:focus {
     background-color: #777;
+    border: #777;
 }
 /* END DETAIL */

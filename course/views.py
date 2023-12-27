@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
+from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from urllib.parse import unquote
@@ -42,6 +43,16 @@ class CourseDetailView(View):
             'videos': videos
         }
         return render(request, 'course/course_detail.html', context)
+
+
+class CourseVideoListView(View):
+    def get(self, request, course_id=None, course_slug=None):
+        videos = CourseVideo.objects.filter(
+            Q(courses__id=course_id) &
+            Q(courses__slug=course_slug)
+        )
+        context = {'videos': videos}
+        return render(request, 'course/course_video_list.html', context)
 
 
 class CourseVideoView(View):
