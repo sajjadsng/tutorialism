@@ -12,7 +12,7 @@ urlpatterns = [
     path('courses/', include('course.urls', namespace='course')),
     path('category/', include('category.urls', namespace='category')),
     path('video/', include('video.urls', namespace='video')),
+    path('payment/', include('payment.urls', namespace='payment')),
     # ckeditor file path
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'category.apps.CategoryConfig',
     'teacher.apps.TeacherConfig',
     'video.apps.VideoConfig',
+    'payment.apps.PaymentConfig',
     # default apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -34,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     # third party apps
     'phonenumber_field',
     'ckeditor',

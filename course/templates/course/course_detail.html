@@ -22,14 +22,21 @@
         <hr style="width: 50%; margin: auto;">
         <p class="detail-description">{{ course.description|safe }}</p>
         <hr style="width: 50%; margin: auto;">
+        <form action="{% url 'payment:cart_add' course.id %}" method="post">
+			{% csrf_token %}
+			<div class="d-grid gap-2 col-4 mx-auto mt-2" style="text-align: center; margin: auto;">
+                <input class="btn btn-primary videos-btn" type="submit" value="افزودن به سبد خرید">
+            </div>
+		</form>
 
+        <hr style="width: 50%; margin: auto; margin-top: 1%;">
         <div class="d-grid gap-2 col-6 mx-auto mt-2">
             <a href="{% url 'course:course_video_list' course.id course.slug %}" 
                 class="btn btn-primary videos-btn" type="button" target="_blank"
             >
                 ویدیو های دوره
             </a>
-        </div>          
+        </div>     
     </div>
 
 {% endblock content %}
