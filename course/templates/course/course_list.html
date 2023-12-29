@@ -4,20 +4,24 @@
 
 {% block content %}
 
-    {% for course in courses %}
-        <div class="card" style="width: 18rem;">
-            <img src="{{ course.banner.url }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title text-center">{{ course.name }}</h5>
-                <p class="card-text cart-detail">{{ course.teacher }}</p>
-                {% if course.discount %}
-                    <p class="card-text cart-detail">{{ course.dicount_price }}</p>
-                {% else %}
-                    <p class="card-text cart-detail">{{ course.price }}</p>
-                {% endif %}
-                <a href="{{ course.get_absolute_url }}" class="btn btn-primary btn-detail">جزئیات بیشتر</a>
+    <div class="row">
+        {% for course in courses %}
+        <div class="col-sm-3 col-lg-3">
+            <div class="card" style="height: 100%; width: 90%;">
+                <img src="{{ course.banner.url }}" class="card-img-top" alt="..." height="90%" width="90%">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ course.name }}</h5>
+                    <p class="card-text card-detail">{{ course.teacher }}</p>
+                    {% if course.discount %}
+                        <p class="card-text card-detail">{{ course.dicount_price }}</p>
+                    {% else %}
+                        <p class="card-text card-detail">{{ course.price }}</p>
+                    {% endif %}
+                    <a href="{{ course.get_absolute_url }}" class="btn btn-primary btn-detail">جزئیات بیشتر</a>
+                </div>
             </div>
         </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 
 {% endblock %}

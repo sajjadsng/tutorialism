@@ -180,7 +180,7 @@ form .btn:active {
 /* END AUTHENTICATION */
 
 /* CARD */
-div.card-body p.cart-detail {
+div.card-body p.card-detail {
     color: #736984;
 }
 div.card-body a.btn-detail {

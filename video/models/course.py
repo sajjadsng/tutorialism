@@ -23,6 +23,10 @@ class CourseVideo(Video):
         related_name='videos',
         verbose_name=_("دوره ها")
     )
+    section = models.CharField(
+        max_length=2,
+        verbose_name=_("شماره قسمت")
+    )
     banner = models.ImageField(
         upload_to='images/course-videos/',
         verbose_name=_("بنر")
