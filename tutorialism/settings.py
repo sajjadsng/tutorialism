@@ -141,3 +141,8 @@ CKEDITOR_CONFIGS = {
 }
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
+# Authentication backends
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.authentication.UsernameBackend'
+]
