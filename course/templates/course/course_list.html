@@ -12,10 +12,14 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">{{ course.name }}</h5>
                     <p class="card-text card-detail">{{ course.teacher }}</p>
-                    {% if course.discount %}
-                        <p class="card-text card-detail">{{ course.dicount_price }}</p>
+                    {% if course.price == 0 %}
+                        <p class="card-text card-detail">رایگان</p>
                     {% else %}
-                        <p class="card-text card-detail">{{ course.price }}</p>
+                        {% if course.discount %}
+                            <p class="card-text card-detail">{{ course.dicount_price }}</p>
+                        {% else %}
+                            <p class="card-text card-detail">{{ course.price }}</p>
+                        {% endif %}
                     {% endif %}
                     <a href="{{ course.get_absolute_url }}" class="btn btn-primary btn-detail">جزئیات بیشتر</a>
                 </div>
