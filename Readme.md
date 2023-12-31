@@ -4,7 +4,7 @@
 What is Tutorialism?</h3>
 <p align=left>
 So, I know you want to say `design it's too fucking ugly:/`; as a matter of fact, I'm a backend developer and I don't like design and front-end and this design made with Bootstrap.<br>
-And its support of Persian language yet, But I working on it and try to add another languages.
+And its support of Persian language yet, But I working on it and trying to add another languages.
 </p>
 
 <p align=left>
