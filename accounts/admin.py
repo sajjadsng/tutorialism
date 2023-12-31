@@ -27,7 +27,7 @@ class UserAdmin(BaseUserAdmin):
     )
 
     search_fields = ('phone', 'email', 'username', 'fullname')
-    ordering = ('phone', 'email')
+    ordering = ('phone', 'username')
     filter_horizontal = ('groups', 'user_permissions')
 
     def get_form(self, request, obj=None, **kwargs):

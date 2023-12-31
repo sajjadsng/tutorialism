@@ -18,11 +18,11 @@
         <form method="POST">
             {% csrf_token %}
             <p class="text-danger">{{ form.errors.username }}</p>
-            <span class="label">{{ form.username.label }}</span>{{ form.username }}
+            <span class="label">{{ form.username.label }}</span><br>{{ form.username }}
             <br>
 
             <p class="text-danger">{{ form.errors.phone }}</p>
-            <span class="label">{{ form.phone.label }}</span>{{ form.phone }}
+            <span class="label">{{ form.phone.label }}</span><br>{{ form.phone }}
             <br>
 
             <p class="text-danger">{{ form.errors.email }}</p>
@@ -30,10 +30,10 @@
             <br>
 
             <p class="text-danger">{{ form.errors.password }}</p>
-            <span class="label">{{ form.password.label }}</span>{{ form.password }}
+            <span class="label">{{ form.password.label }}</span><br>{{ form.password }}
             <br>
 
-            <span class="label">{{ form.password2.label }}</span>{{ form.password2 }}
+            <span class="label">{{ form.password2.label }}</span><br>{{ form.password2 }}
             <br>
 
             <input type="submit" value="ثبت نام" class="btn">

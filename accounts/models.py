@@ -11,8 +11,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(
         max_length=30,
         unique=True,
-        null=True,
-        blank=True,
         verbose_name=_("نام کاربری")
     )
     phone = PhoneNumberField(

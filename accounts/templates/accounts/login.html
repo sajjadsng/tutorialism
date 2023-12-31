@@ -17,9 +17,9 @@
         <hr>
         <form method="POST">
             {% csrf_token %}
-            <span>شماره همراه:</span>{{ form.phone }}
+            <span>شماره همراه:</span><br>{{ form.phone }}
             <br>
-            <span>تکرار رمز عبور</span>{{ form.password }}
+            <span>تکرار رمز عبور</span><br>{{ form.password }}
             <input type="submit" value="ورود" class="btn">
         </form>
         <div class="pass-link">
