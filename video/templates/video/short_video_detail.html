@@ -7,6 +7,15 @@
         <div class="jumbotron">
             <h3 style="text-align: center; margin-top: 2%;">
                 <a href="{% url 'home:home' %}" class="btn btn-primary videos-btn">بازگشت به صفحه اصلی سایت</a>
+                <br>
+                {% if video.price == 0 %}
+                    <form action="{% url 'payment:cart_add_short' video.id %}" method="post">
+                        {% csrf_token %}
+                        <input class="btn btn-primary videos-btn" style="width: 20%;"
+                            type="submit" value="افزودن به سبد خرید"
+                        >
+                    </form>
+                {% endif %}
             </h3>
             <!-- BREADCRUMB -->
             <nav aria-label="breadcrumb" dir="ltr">

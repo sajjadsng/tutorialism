@@ -12,7 +12,7 @@
                 <br>
                 <div class="box-element">
                     <div class="cart-row">
-                        <div style="flex:2"><strong>نام محصول</strong></div>
+                        <div style="flex:2"><strong>نام</strong></div>
                         <div style="flex:2"><strong>قیمت</strong></div>
                         <div style="flex:1"><strong>حذف</strong></div>
 
@@ -23,7 +23,7 @@
                         <div style="flex:2"><p>{{ value.price|intcomma:False}} ریال </p></div>
                         <div style="flex:1">
                             <a class="btn btn-sm btn-danger"
-                                href="{% url 'payment:cart_remove' value.course_id %}">
+                                href="{% url 'payment:cart_remove_course' value.course_id %}">
                                 حذف
                             </a>
                         </div>
