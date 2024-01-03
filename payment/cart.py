@@ -13,13 +13,13 @@ class Cart:
     
     def __iter__(self):
         course_ids = self.cart.keys()   # get IDs courses -cart keys-
-        courses = Course.objects.filter(id__in=course_ids)  # get the all of courses in cart
+        courses = Course.objects.filter(id__in=course_ids)  # get the all courses in cart
         cart = self.cart.copy()
         for course in courses:
             cart[str(course.id)]['course'] = course    # add new item by name course -course name- in cart
 
         for value in cart.values():
-            yield value # return cart values
+            yield value     # return cart values
 
     def add(self, course):
         course_id = str(course.id)
@@ -39,7 +39,7 @@ class Cart:
         if course_id in self.cart:
             del self.cart[course_id]
             self.save()
-    
+
     def clear(self):
         del self.session[COURSE_CART_SESSION_ID]
         self.save()

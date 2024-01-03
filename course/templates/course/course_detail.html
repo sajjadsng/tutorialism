@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} دوره {{ course.name }} {% endblock title %}
+{% block title %} دوره {{ course.title }} {% endblock title %}
 
 {% block content %}
 
@@ -10,14 +10,14 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{% url 'home:home' %}">خانه</a></li>
               <li class="breadcrumb-item"><a href="{% url 'course:course_list' %}">دوره ها</a></li>
-              <li class="breadcrumb-item active" aria-current="page">{{ course.name }}</li>
+              <li class="breadcrumb-item active" aria-current="page">{{ course.title }}</li>
             </ol>
         </nav>
         <!-- END BREADCRUMB -->
 
-        <img src="{{ course.banner.url }}" class="img-fluid detail-img" alt="{{ course.name }}">
+        <img src="{{ course.banner.url }}" class="img-fluid detail-img" alt="{{ course.title }}">
         <p class="lead detail-lead">
-            {{ course.name }}
+            {{ course.title }}
         </p>
         <hr style="width: 50%; margin: auto;">
         <p class="detail-description">{{ course.description|safe }}</p>

@@ -19,7 +19,7 @@
                     </div>
                     {% for value in cart %}
                     <div class="cart-row">
-                        <div style="flex:2"><p>{{ value.course.name }}</p></div>
+                        <div style="flex:2"><p>{{ value.course.title }}</p></div>
                         <div style="flex:2"><p>{{ value.price|intcomma:False}} ریال </p></div>
                         <div style="flex:1">
                             <a class="btn btn-sm btn-danger"

@@ -3,6 +3,8 @@ from django.utils.translation import gettext_lazy as _
 
 from ckeditor_uploader.fields import RichTextUploadingField
 
+from teacher.models import Teacher
+
 
 class Video(models.Model):
     title = models.CharField(
@@ -16,6 +18,12 @@ class Video(models.Model):
         blank=True,
         allow_unicode=True,
         verbose_name=_("اسلاگ")
+    )
+    teacher = models.ForeignKey(
+        Teacher,
+        on_delete=models.CASCADE,
+        related_name='%(class)svideos',
+        verbose_name=_("آموزگار")
     )
     created_at = models.DateTimeField(
         auto_now_add=True,

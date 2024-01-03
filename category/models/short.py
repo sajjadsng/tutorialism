@@ -6,7 +6,7 @@ from category.models import Category
 
 class ShortVideoCategory(Category):
     banner = models.ImageField(
-        upload_to='images/short-video-banners/',
+        upload_to='images/category/short-video-banner/',
         null=True,
         blank=True,
         verbose_name=_("بنر")

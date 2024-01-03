@@ -3,17 +3,10 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 
 from video.models import Video
-from teacher.models import Teacher
 from course.models import Course
 
 
 class CourseVideo(Video):
-    teacher = models.ForeignKey(
-        Teacher,
-        on_delete=models.CASCADE,
-        related_name='course_videos',
-        verbose_name=_("آموزگار")
-    )
     video = models.FileField(
         upload_to='videos/courses/',
         verbose_name=_("ویدیو")
@@ -27,6 +20,7 @@ class CourseVideo(Video):
         max_length=2,
         verbose_name=_("شماره قسمت")
     )
+    is_free = models.BooleanField(default=False, verbose_name=_("رایگان"))
     banner = models.ImageField(
         upload_to='images/course-videos/',
         verbose_name=_("بنر")

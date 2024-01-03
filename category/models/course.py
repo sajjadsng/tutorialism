@@ -7,7 +7,7 @@ from category.models import Category
 
 class CourseCategory(Category):
     banner = models.ImageField(
-        upload_to='images/course-banners/',
+        upload_to='images/category/course-banner/',
         null=True,
         blank=True,
         verbose_name=_("بنر")

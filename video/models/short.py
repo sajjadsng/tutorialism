@@ -4,16 +4,9 @@ from django.urls import reverse
 
 from video.models import Video
 from category.models import ShortVideoCategory
-from teacher.models import Teacher
 
 
 class ShortVideo(Video):
-    teacher = models.ForeignKey(
-        Teacher,
-        on_delete=models.CASCADE,
-        related_name='short_videos',
-        verbose_name=_("آموزگار")
-    )
     video = models.FileField(
         upload_to='videos/shorts/',
         verbose_name=_("ویدیو")

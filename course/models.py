@@ -9,9 +9,9 @@ from teacher.models import Teacher
 
 
 class Course(models.Model):
-    name = models.CharField(
+    title = models.CharField(
         max_length=50,
-        verbose_name=_("نام دوره")
+        verbose_name=_("عنوان دوره")
     )
     teacher = models.ForeignKey(
         Teacher,
@@ -68,7 +68,7 @@ class Course(models.Model):
         verbose_name_plural = _("دوره ها")
 
     def __str__(self):
-        return self.name
+        return self.title
 
     @property
     def discount_price(self):

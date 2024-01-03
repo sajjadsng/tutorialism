@@ -12,7 +12,7 @@ class CourseVideoAdmin(admin.ModelAdmin):
     list_pre_page = 30
 
     def get_courses(self, obj):
-        return " | ".join([course.name for course in obj.courses.all()])
+        return " | ".join([course.title for course in obj.courses.all()])
 
 
 @admin.register(ShortVideo)
