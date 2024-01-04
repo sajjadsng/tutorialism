@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from urllib.parse import unquote
 
@@ -55,8 +56,13 @@ class CourseVideoListView(View):
         return render(request, 'course/course_video_list.html', context)
 
 
-class CourseVideoView(View):
+class CourseVideoView(LoginRequiredMixin, View):
     def get(self, request, video_id=None, video_slug=None):
         video = get_object_or_404(CourseVideo, id=video_id, slug=video_slug)
-        context = {'video': video}
+        course_paid = video.courses.filter(sold_to=request.user)
+
+        context = {
+            'video': video,
+            'course_paid': course_paid
+        }
         return render(request, 'course/video_course.html', context)

@@ -18,8 +18,10 @@
             </nav>
             <!-- END BREADCRUMB -->
         </div>
-        <video controls width="70%" style="margin-left: 15%; margin-top: 5%;">
-            <source src="{{ video.video.url }}" />
-        </video>
+        {% if course_paid %}
+            <video controls width="70%" style="margin-left: 15%; margin-top: 5%;">
+                <source src="{{ video.video.url }}" />
+            </video>
+        {% endif %}
     </div>
 {% endblock content %}

@@ -1,6 +1,8 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
+from phonenumber_field.formfields import PhoneNumberField
+
 
 class UserLoginForm(forms.Form):
     def __init__(self, *args, **kwargs):
@@ -10,5 +12,8 @@ class UserLoginForm(forms.Form):
                 'class': 'field'
             })
 
-    phone = forms.CharField(label=_("شماره همراه"), widget=forms.TextInput())
+    phone = PhoneNumberField(
+        region='IR',
+        label=_("شماره همراه")
+    )
     password = forms.CharField(label=_("رمز عبور"), widget=forms.PasswordInput())
