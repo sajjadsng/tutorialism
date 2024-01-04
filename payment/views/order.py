@@ -10,7 +10,7 @@ class OrderDetailView(LoginRequiredMixin, View):
     def get(self, request, order_id=None):
         order = get_object_or_404(Order, id=order_id)
         context = {'order': order}
-        return render(request, 'payment/cart_detail.html', context)
+        return render(request, 'payment/order_detail.html', context)
 
 
 class OrderCreateView(LoginRequiredMixin, View):
@@ -25,4 +25,4 @@ class OrderCreateView(LoginRequiredMixin, View):
                 quantity=item['quantity']
             )
         cart.clear()
-        return redirect('payment:cart_detail')
+        return redirect('payment:order_detail', order.id)

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 
 {% block title %} لیست دوره ها {% endblock title %}
 
@@ -16,9 +17,9 @@
                         <p class="card-text card-detail">رایگان</p>
                     {% else %}
                         {% if course.discount %}
-                            <p class="card-text card-detail">{{ course.dicount_price }}</p>
+                            <p class="card-text card-detail">{{ course.dicount_price|intcomma:False }}</p>
                         {% else %}
-                            <p class="card-text card-detail">{{ course.price }}</p>
+                            <p class="card-text card-detail">{{ course.price|intcomma:False }}</p>
                         {% endif %}
                     {% endif %}
                     <a href="{{ course.get_absolute_url }}" class="btn btn-primary btn-detail">جزئیات بیشتر</a>

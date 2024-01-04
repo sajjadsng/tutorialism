@@ -39,9 +39,6 @@ class Order(models.Model):
 
     def __str__(self):
         return str(self.user.phone)
-        
-    def total_post_price(self):
-        return self.total_price + int(350000)   # total price plus postage
 
 
 class OrderItem(models.Model):
@@ -71,4 +68,4 @@ class OrderItem(models.Model):
         verbose_name_plural = _("آیتم های سفارش")
 
     def __str__(self):
-        return str(self.course.name)
+        return str(self.course.title)
