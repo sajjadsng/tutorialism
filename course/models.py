@@ -6,6 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 from category.models import CourseCategory
 from teacher.models import Teacher
+from accounts.models import User
 
 
 class Course(models.Model):
@@ -49,6 +50,16 @@ class Course(models.Model):
         blank=True,
         allow_unicode=True,
         verbose_name=_("اسلاگ")
+    )
+    sold_to = models.ManyToManyField(
+        User,
+        related_name='courses',
+        blank=True,
+        verbose_name=_("خرید ها")
+    )
+    sale_count = models.PositiveIntegerField(
+        default=0,
+        verbose_name=_("تعداد فروش")
     )
     created_at = models.DateTimeField(
         auto_now_add=True,

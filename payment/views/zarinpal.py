@@ -5,7 +5,7 @@ from django.http import HttpResponse
 import requests
 import json
 
-from payment.models import Order
+from payment.models import Order, OrderItem
 
 MERCHANT = "your-merchant-id"
 ZP_API_REQUEST = "https://api.zarinpal.com/pg/v4/payment/request.json"
@@ -51,6 +51,9 @@ class VerifyView(View):
         t_authority = request.GET['Authority']
         order_id = request.session['order_id']
         order = Order.objects.get(id=int(order_id))
+        order_items = OrderItem.objects.get(order=order)
+        courses = order_items.course
+
         if request.GET.get('Status') == 'OK':
             req_header = {"accept": "application/json",
                           "content-type": "application/json'"}
@@ -65,6 +68,9 @@ class VerifyView(View):
                 if t_status == 100:
                     order.is_paid = True
                     order.save()
+                    courses.sold_to.add(order.user)
+                    courses.sale_count+=1
+                    courses.save()
                     return render(request, 'payment/verify_success.html')
                 elif t_status == 101:
                     return HttpResponse('Transaction submitted : ' + str(

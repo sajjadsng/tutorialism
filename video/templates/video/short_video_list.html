@@ -12,11 +12,6 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">{{ video.title }}</h5>
                     <p class="card-text card-detail">{{ video.teacher }}</p>
-                    {% if video.price == 0 %}
-                        <p class="card-text card-detail">رایگان</p>
-                    {% else %}
-                        <p class="card-text card-detail">{{ video.price }}</p>
-                    {% endif %}
                     <a href="{{ video.get_absolute_url }}" class="btn btn-primary btn-detail">تماشا ویدیو</a>
                 </div>
             </div>

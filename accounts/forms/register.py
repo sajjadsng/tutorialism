@@ -36,21 +36,21 @@ class RegisterForm(forms.ModelForm):
 
     def clean_username(self):
         username = self.cleaned_data['username']
-        user = User.object.filter(username=username)
+        user = User.objects.filter(username=username)
         if user:
             raise ValidationError(_("این نام کاربری از قبل وجود دارد"))
         return username
 
     def clean_email(self):
         email = self.cleaned_data['email']
-        user = User.object.filter(email=email)
+        user = User.objects.filter(email=email)
         if user:
             raise ValidationError(_("این ایمیل از قبل وجود دارد"))
         return email
 
     def clean_phone(self):
         phone = self.cleaned_data['phone']
-        user = User.object.filter(phone=phone)
+        user = User.objects.filter(phone=phone)
         if user:
             raise ValidationError(_("این شماره همراه از قبل وجود دارد"))
         return phone

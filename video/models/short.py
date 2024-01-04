@@ -11,10 +11,6 @@ class ShortVideo(Video):
         upload_to='videos/shorts/',
         verbose_name=_("ویدیو")
     )
-    price = models.PositiveIntegerField(
-        default=0,
-        verbose_name=_("قیمت")
-    )
     banner = models.ImageField(
         upload_to='images/course-videos/',
         verbose_name=_("بنر")

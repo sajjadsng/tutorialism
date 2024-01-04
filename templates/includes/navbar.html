@@ -8,6 +8,10 @@
             <button class="dropbtn">حساب کاربری</button>
             <div class="dropdown-content">
                 {% if request.user.is_authenticated %}
+                    <p class="link">
+                        <div class="title text text-center">{{ request.user.username }}</div>
+                        <div class="bar"></div>
+                    </p>
                     <a href="{% url 'accounts:logout' %}" class="link">
                         <div class="title">خروج</div>
                         <div class="bar"></div>
