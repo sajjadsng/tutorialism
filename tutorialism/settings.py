@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'teacher.apps.TeacherConfig',
     'video.apps.VideoConfig',
     'payment.apps.PaymentConfig',
+    'extensions',
     # default apps
     'django.contrib.admin',
     'django.contrib.auth',

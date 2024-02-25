@@ -36,7 +36,46 @@
             >
                 ویدیو های دوره
             </a>
-        </div>     
+            <br>
+        </div>
+        <hr>
+
+         <div class="d-grid gap-2 col-4 mx-auto mt-2">
+                {% if request.user.is_authenticated %}
+                 <p dir="rtl">
+                   {{ request.user.username }}  عزیز نظر خود را وارد کنید
+                 </p>
+
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{  form.as_p }}
+                        <input class="btn btn-success" type="submit" value="ارسال نظر">
+                    </form>
+
+                {% else %}
+                        <h3 class="alert alert-danger">برای ثبت نظر ابتدا وارد سایت شوید</h3>
+                {% endif %}
+         </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto mt-2" style="direction: rtl">
+                    <hr>
+                {% for comment in comments %}
+                    <div class="card">
+                        <p class="card-header" style="direction: rtl">
+                             <a href="#">{{ comment.user.username }}</a> {{ comment.jpublish }}
+                        </p>
+                        <p class="card-body">
+                            {{ comment.body }}
+                        </p>
+                    </div>
+                {% endfor %}
+
+
+
+
+        </div>
+
+
     </div>
 
 {% endblock content %}

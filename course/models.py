@@ -1,3 +1,4 @@
+from django import forms
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
@@ -7,6 +8,9 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from category.models import CourseCategory
 from teacher.models import Teacher
 from accounts.models import User
+from extensions.utils import jalali_converter
+from django.utils import timezone
+
 
 
 class Course(models.Model):
@@ -96,3 +100,21 @@ class Course(models.Model):
             'course:course_detail',
             kwargs={'course_id': self.id, 'course_slug': self.slug}
         )
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_comments',verbose_name=_("نام کاربر"))
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='course_comments', verbose_name=_("عنوان دوره"))
+    body = models.TextField(max_length=100, verbose_name=_("نظر"))
+    create = models.DateTimeField(auto_now_add= True)
+
+    class Meta:
+        verbose_name = _("نظر")
+        verbose_name_plural = _("نظرات")
+
+    def __str__(self):
+        return f'{self.user} - {self.body[:20]}'
+
+    def jpublish(self):
+        return jalali_converter(self.create)
+    jpublish.short_description="زمان انتشار"

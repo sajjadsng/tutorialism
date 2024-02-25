@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -6,8 +6,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from urllib.parse import unquote
 
-from .models import Course
+from .models import Course, Comment, User
 from video.models import CourseVideo
+from .forms import CommentCreateForm
+from django.contrib import messages
 
 
 class CourseListView(View):
@@ -32,18 +34,38 @@ class CourseListView(View):
 
 
 class CourseDetailView(View):
-    def get(self, request, course_id=None, course_slug=None):
-        course_slug = unquote(course_slug)
-        course = get_object_or_404(Course, id=course_id, slug=unquote(course_slug))
-        introducing_video = CourseVideo.objects.filter(courses=course).first()
-        videos = CourseVideo.objects.filter(courses=course)[1:]
+    form_class= CommentCreateForm
+
+    def setup(self, request, *args, **kwargs):
+        self.course_instance = get_object_or_404(Course, pk=kwargs['course_id'], slug=kwargs['course_slug'])
+        return super().setup(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        # course_slug = unquote(course_slug)
+        # course = get_object_or_404(Course, id=course_id, slug=unquote(course_slug))
+        comments = Comment.objects.all()
+        usernames = User.objects.all()
+        introducing_video = CourseVideo.objects.filter(courses=self.course_instance).first()
+        videos = CourseVideo.objects.filter(courses=self.course_instance)[1:]
 
         context = {
             'introducing_video': introducing_video,
-            'course': course,
-            'videos': videos
+            'course': self.course_instance,
+            'videos': videos,
+            'comments': comments,
+            'form':self.form_class,
         }
         return render(request, 'course/course_detail.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.user = request.user
+            new_comment.course = self.course_instance
+            new_comment.save()
+            messages.success(request, 'نظر شما ثبت شد', 'success')
+            return redirect('course:course_detail', self.course_instance.id, self.course_instance.slug)
 
 
 class CourseVideoListView(View):
